@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman_2472051</title>
+    <style>
+        body {
+            margin: 100px;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            background-color: lightblue;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .left {
+            text-align: center;
+        }
+
+        .right {
+            text-align: center;
+            margin-top: 250px;
+        }
+
+        #cek {
+            width: 3ex;
+            height: 4ex;
+        }
+
+        #soal {
+            margin-bottom: 50px;
+        }
+
+        #jawaban {
+            margin-top: 30px;
+        }
+        </style>
+</head>
+
+<body onload="generate()">
+    <div class="left">
+        <img src="" alt="" id="img">
+        <div id="live"></div>
+    </div>
+    <div class="right">
+        <div>
+            <h1 id="soal"></h1>
+        </div>
+        <div id="clue"></div>
+        <div id="jawaban">
+            <input type="text" name="cek" id="cek">
+            <button onclick="checkAnswer()" id="tombol">Check</button>
+        </div>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        let answers = ["PYTHON", "JAVASCRIPT", "TAILWIND", "REACT", "LARAVEL"]
+        let clues = [
+            "A versatile programming language named after a snake, loved for its simplicity.",
+            "The language that brings interactivity to websites, often abbreviated as JS.",
+            "A utility-first CSS framework for rapidly building custom designs.",
+            "A JavaScript library for building dynamic user interfaces, created by Facebook.",
+            "A PHP framework known for elegant syntax and robust web development tools.",
+        ];
+
+       let pilih = Math.floor(Math.random() * 5)
+        var answer = answers[pilih]
+        var answer_ = document.getElementById('answer_')
+        var lives = 10
+        const jawaban = answers[pilih]
+        let banyak = jawaban.length
+        let array = new Array(banyak).fill('_')
+        let indikator = jawaban.length
+
+        function generate() {
+            window.onload
+            document.getElementById('clue').innerHTML = clues[pilih]
+            document.getElementById('live').innerHTML = '<H1>LIVES : ' + lives + '</H1>'
+            document.getElementById('img').src = 'img/' + lives + '.jpg'
+            document.getElementById('soal').innerHTML = array.join(' ')
+        }
+
+        function checkAnswer() {
+            let cek = document.getElementById('cek').value.toUpperCase()
+            let bool = false
+            for (let i = 0; i < banyak; i++) {
+                if (cek === array[i]){
+                    bool=true
+                }else if (answer[i] === cek) {
+                    array[i] = cek.toUpperCase();
+                    bool = true
+                    indikator -=1
+                }
+            }
+            
+            if (bool === false) {
+                    lives -= 1
+                    document.getElementById('live').innerHTML = '<H1>LIVES : ' + lives + '</H1>'
+                    document.getElementById('img').src = 'img/' + lives + '.jpg'
+                }else if (bool === true) {
+                    document.getElementById('soal').innerHTML = array.join(' ')
+                }
+            
+            checkWin()
+        }
+
+        function checkWin() {
+            if (lives === 0){
+                document.getElementById('message').innerHTML='Kamu Kalah!'
+                document.getElementById('message').style.color='red'
+                document.getElementById('jawaban').style.display='none'
+            } else if(indikator === 0){
+                document.getElementById('message').innerHTML='Kamu Menang!'
+                document.getElementById('message').style.color='green'
+                document.getElementById('jawaban').style.display='none'
+            }
+        }
+
+    </script>
+</body>
+
+</html>
