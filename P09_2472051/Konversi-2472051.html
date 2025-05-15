@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi</title>
+    <style>
+        .container{
+            background-color: antiquewhite;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .body{
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 3ex 3ex 10ex 3ex;
+            width: 30%;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+        h3{
+            text-align: center;
+            color:#333;
+        }
+        .uang{
+            margin-top: 2px;
+            margin-bottom: 3px;
+            color:#555;
+        }
+        .exc{
+            background-color:#2575fc;
+            color: white;
+            width: 4cm;
+            border-radius: 5%;
+        }
+        .convert{
+            background-color:#2575fc;
+            color: white;
+            width:100%;
+        }
+        .opt{
+            margin-top: 2px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .number{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="body">
+            <h3>Konverter Mata Uang</h3>
+            <span class="uang">Jumlah Uang</span>
+            <input type="number" class="number" id="jumlah" placeholder="Jumlah uang">
+            <span class="uang">Dari Mata Uang</span>
+            <select class="opt" id = "dari">
+                <option value="1">USD - Dollar Amerika</option>
+                <option value="2">IDR - Rupiah Indonesia</option>
+                <option value="3">EUR - Euro</option>
+                <option value="4">JPY - Yen Jepang</option>
+                <option value="5">GBP - Pound Inggris</option>
+                <option value="6">SGD - Dollar Singapura</option>
+                <option value="7">AUD - Dollar Australia</option>
+            </select>
+            <button class="exc" id ="exc" onclick="tukar()">Tukar Mata Uang</button>
+            <span class="uang">Ke Mata Uang</span>
+            <select class="opt" id="ke">
+                <option value="1">USD - Dollar Amerika</option>
+                <option value="2">IDR - Rupiah Indonesia</option>
+                <option value="3">EUR - Euro</option>
+                <option value="4">JPY - Yen Jepang</option>
+                <option value="5">GBP - Pound Inggris</option>
+                <option value="6">SGD - Dollar Singapura</option>
+                <option value="7">AUD - Dollar Australia</option>
+            </select>
+            <button class="convert">Konversi</button>
+        </div>
+    </div>
+    <script>
+        let exc = document.getElementById("exc").value;
+        let jumlah = document.getElementById("jumlah").value;
+        let dari = document.getElementById("dari").value;
+        let ke = document.getElementById("ke").value;
+        let nilai
+        let hasil
+
+        function tukar(){
+            let jumlah = document.getElementById("jumlah").value;
+            alert("test" + jumlah)
+        }
+
+        if (dari == 1){
+            nilai = 1
+        }else if(dari == 2){
+            nilai = 16500
+        }else if(dari == 3){
+            nilai = 18500
+        }else if(dari == 4){
+            nilai = 165
+        }else if(dari == 5){
+            nilai = 22000
+        }else if(dari == 6){
+            nilai= 12750
+        }else{
+            nilai = 10500
+        }
+        
+    </script>
+</body>
+
+</html>
